@@ -6,12 +6,12 @@
     "type": "git",
     "url": "https://github.com/mikach/requirejs-babel"
   },
-  "main": "index.js",
+  "main": "es6.js",
   "scripts": {
     "prepare": "npm run generate && npm run optimize",
     "generate": "babel-external-helpers -t var > demo-polyfill/babel-helpers.js",
     "optimize": "r.js -o demo/build.config.js && r.js -o demo-polyfill/build.config.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "eslint es6.js"
   },
   "author": "Michael <mikach27@gmail.com>",
   "license": "MIT",
@@ -25,6 +25,7 @@
     "@babel/polyfill": "7.4.0",
     "@babel/standalone": "7.4.2",
     "babel-plugin-module-resolver-standalone": "0.0.1",
+    "eslint": "5.16.0",
     "requirejs": "^2.3.6"
   }
 }

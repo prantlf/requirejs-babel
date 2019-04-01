@@ -1,0 +1,10 @@
+env:
+  browser: true
+  es6: false
+extends: 'eslint:recommended'
+globals:
+  define: readonly
+  require: readonly
+  process: true
+parserOptions:
+  ecmaVersion: 2015
