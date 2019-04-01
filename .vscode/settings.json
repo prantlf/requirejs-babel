@@ -1,7 +1,6 @@
 {
   "search.exclude": {
     "**/node_modules": true,
-    "**/bower_components": true,
     "**/babel-helpers*": true,
     "**/main-built*": true,
     "package-lock.json": true
