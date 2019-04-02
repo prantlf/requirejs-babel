@@ -1,5 +1,6 @@
 .DS_Store
 .editorconfig
+.eslintrc.yml
 .git
 .gitignore
 .npmignore
@@ -7,3 +8,4 @@
 demo*
 node_modules
 npm-debug.log
+server.js
