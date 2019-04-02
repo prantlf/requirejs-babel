@@ -4,11 +4,11 @@ define([
 //>>excludeEnd('excludeBabel')
 ], function(
 //>>excludeStart('excludeBabel', pragmas.excludeBabel)
-  babel, moduleResolver, _module
+  babel, moduleResolver, module
 //>>excludeEnd('excludeBabel')
 ) {
 //>>excludeStart('excludeBabel', pragmas.excludeBabel)
-  var _buildMap = {};
+  var buildMap = {};
   var fetchText;
 
   if (typeof window !== 'undefined' && window.navigator && window.document) {
@@ -41,7 +41,7 @@ define([
     }
   }
   var excludedOptions = ['extraPlugins', 'resolveModuleSource'];
-  var pluginOptions = _module.config();
+  var pluginOptions = module.config();
   var fileExtension = pluginOptions.fileExtension || '.js';
   var defaultOptions = {
     plugins: (pluginOptions.extraPlugins || []).concat([
@@ -87,7 +87,7 @@ define([
         }
 
         if (config.isBuild) {
-          _buildMap[name] = code;
+          buildMap[name] = code;
         }
 
         onload.fromText(code); 
@@ -95,8 +95,8 @@ define([
     },
 
     write: function (pluginName, moduleName, write) {
-      if (moduleName in _buildMap) {
-        write.asModule(pluginName + '!' + moduleName, _buildMap[moduleName]);
+      if (moduleName in buildMap) {
+        write.asModule(pluginName + '!' + moduleName, buildMap[moduleName]);
       }
     }
 //>>excludeEnd('excludeBabel')
