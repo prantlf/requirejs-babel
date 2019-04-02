@@ -1,10 +1,28 @@
 {
-  "name": "requirejs-babel",
-  "version": "0.0.9",
-  "description": "An AMD loader plugin for Babel",
+  "name": "requirejs-babel7",
+  "version": "1.0.0",
+  "description": "An AMD module loader plugin for using RequireJS with Babel 7",
+  "author": "Michael <mikach27@gmail.com>",
+  "contributors": [
+    "Ferdinand Prantl <prantlf@gmail.com>"
+  ],
+  "license": "MIT",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/prantlf/requirejs-babel/blob/master/LICENSE"
+    }
+  ],
+  "homepage": "https://github.com/prantlf/requirejs-babel#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mikach/requirejs-babel"
+    "url": "git+https://github.com/prantlf/requirejs-babel.git"
+  },
+  "bugs": {
+    "url": "https://github.com/prantlf/requirejs-babel/issues"
+  },
+  "engines": {
+    "node": ">=6"
   },
   "main": "es6.js",
   "scripts": {
@@ -13,8 +31,6 @@
     "optimize": "r.js -o demo/build.config.js && r.js -o demo-polyfill/build.config.js",
     "test": "eslint es6.js"
   },
-  "author": "Michael <mikach27@gmail.com>",
-  "license": "MIT",
   "peerDependencies": {
     "@babel/standalone": "7.x",
     "babel-plugin-module-resolver-standalone": "0.x"
@@ -27,5 +43,11 @@
     "babel-plugin-module-resolver-standalone": "0.0.1",
     "eslint": "5.16.0",
     "requirejs": "^2.3.6"
-  }
+  },
+  "keywords": [
+    "requirejs-plugin",
+    "requirejs",
+    "plugin",
+    "babel"
+  ]
 }
