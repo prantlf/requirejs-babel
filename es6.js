@@ -40,7 +40,7 @@ define([
       return 'es6!' + sourcePath;
     }
   }
-  var excludedOptions = ['extraPlugins', 'resolveModuleSource'];
+  var excludedOptions = ['extraPlugins', 'resolveModuleSource', 'fileExtension'];
   var pluginOptions = module.config();
   var fileExtension = pluginOptions.fileExtension || '.js';
   var defaultOptions = {
