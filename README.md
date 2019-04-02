@@ -66,7 +66,7 @@ open http://localhost:8967/demo/normal.html
 
 ## Advanced
 
-If you are going to use ES6 classes, you will need to add the `external-helpers` plugin and include a script with Babel external helpers. If you are going to use `async`/`await` keywords, you will need to add the `transform-async-to-generator` plugin and include the script with Babel polyfills. Depending on the target web browser, which you need to support, you can enable presers `es2015` (default), `es2016` or `es2017`.
+If you are going to use ES6 classes, you will need to add the `external-helpers` plugin and include a script with Babel external helpers. If you are going to use `async`/`await` keywords, you will need to add the `transform-async-to-generator` plugin and include the script with Babel polyfills. Depending on the target web browser, which you need to support, you can enable presets `es2015` (default), `es2016` or `es2017`.
 
 Install `@babel/cli` for generating Babel helpers and `@babel/polyfill`, if you need it:
 
@@ -122,7 +122,7 @@ Before you load the main application module by `require`, make sure, that you in
 <script src="babel-helpers.js"></script>
 ```
 
-See also an [advanded demo] project:
+See also an [advanced demo] project:
 
 ```sh
 npm start
@@ -153,7 +153,7 @@ Licensed under the MIT license.
 [NPM]: https://www.npmjs.com/
 [Yarn]: https://yarnpkg.com/
 [simple demo]: https://github.com/prantlf/requirejs-babel/tree/master/demo
-[advanded demo]: https://github.com/prantlf/requirejs-babel/tree/master/demo
+[advanced demo]: https://github.com/prantlf/requirejs-babel/tree/master/demo
 [babel.transform]: https://babeljs.io/docs/en/babel-core#transform
 [options]: https://babeljs.io/docs/en/options
 [mandatory plugins]: https://github.com/prantlf/requirejs-babel/blob/master/es6.js#L48
