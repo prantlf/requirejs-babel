@@ -1,6 +1,6 @@
 {
   "name": "requirejs-babel7",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "An AMD module loader plugin for using RequireJS with Babel 7",
   "author": "Michael <mikach27@gmail.com>",
   "contributors": [
@@ -16,7 +16,7 @@
   "homepage": "https://github.com/prantlf/requirejs-babel#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/prantlf/requirejs-babel.git"
+    "url": "https://github.com/prantlf/requirejs-babel.git"
   },
   "bugs": {
     "url": "https://github.com/prantlf/requirejs-babel/issues"
