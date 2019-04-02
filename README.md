@@ -92,6 +92,26 @@ config: {
 }
 ```
 
+You can use any [options] of [babel.transform] for configuring the `es6` plugin. Use the `extraPlugins` key not to replace [mandatory plugins] added by `es6!`. You can customize the [default module name resolution] with the `resolveModuleSource` key (see [resolvePath] for more information) to transpile only modules with a special file extension:
+
+```js
+// import * from 'es5module.js'  -> define(['es5module])
+// import * from 'es6module.mjs' -> define(['es6!es6module])
+fileExtension: '.mjs',
+resolveModuleSource: function (sourcePath, currentFile, opts) {
+  if (sourcePath.indexOf('!') < 0) {
+    var lengthWithoutExtension = sourcePath.length - 3
+    if (sourcePath.lastIndexOf('.js') === lengthWithoutExtension) {
+      return sourcePath.substr(0, lengthWithoutExtension)
+    }
+    --lengthWithoutExtension
+    if (sourcePath.lastIndexOf('.mjs') === lengthWithoutExtension) {
+      return 'es6!' + sourcePath.substr(0, lengthWithoutExtension)
+    }
+  }
+}
+```
+
 Before you load the main application module by `require`, make sure, that you included babel helpers and Babe polyfills, if you need it. For example:
 
 ```html
@@ -131,3 +151,8 @@ Licensed under the MIT license.
 [Yarn]: https://yarnpkg.com/
 [simple demo]: https://github.com/prantlf/requirejs-babel/tree/master/demo]
 [advanded demo]: https://github.com/prantlf/requirejs-babel/tree/master/demo]
+[babel.transform]: https://babeljs.io/docs/en/babel-core#transform
+[options]: https://babeljs.io/docs/en/options
+[mandatory plugins]: https://github.com/prantlf/requirejs-babel/blob/master/es6.js#L48
+[default module name resolution]: https://github.com/prantlf/requirejs-babel/blob/master/es6.js#L38
+[resolvePath]: https://github.com/tleunen/babel-plugin-module-resolver/blob/master/DOCS.md#resolvepath
