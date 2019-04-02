@@ -41,8 +41,11 @@
     "@babel/polyfill": "7.4.0",
     "@babel/standalone": "7.4.2",
     "babel-plugin-module-resolver-standalone": "0.0.1",
+    "connect": "3.6.6",
+    "connect-block-favicon": "1.0.2",
     "eslint": "5.16.0",
-    "requirejs": "^2.3.6"
+    "requirejs": "^2.3.6",
+    "serve-static": "1.13.2"
   },
   "keywords": [
     "requirejs-plugin",
