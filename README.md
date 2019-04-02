@@ -50,7 +50,7 @@ You can use the ES6 module syntax in modules loaded by the `es6!` plugin includi
 
 If you use the RequireJS optimizer `r.js`, you have to exclude Babel with the module-resolver plugin and bundle the requirejs-babel7 plugin without the compiling functionality by adding the following to the RequireJS build configuration:
 
-```json
+```js
 exclude: ['babel', 'babel-plugin-module-resolver'],
 pragmasOnSave: {
   excludeBabel: true
