@@ -152,8 +152,8 @@ Licensed under the MIT license.
 [Node.js]: http://nodejs.org/
 [NPM]: https://www.npmjs.com/
 [Yarn]: https://yarnpkg.com/
-[simple demo]: https://github.com/prantlf/requirejs-babel/tree/master/demo]
-[advanded demo]: https://github.com/prantlf/requirejs-babel/tree/master/demo]
+[simple demo]: https://github.com/prantlf/requirejs-babel/tree/master/demo
+[advanded demo]: https://github.com/prantlf/requirejs-babel/tree/master/demo
 [babel.transform]: https://babeljs.io/docs/en/babel-core#transform
 [options]: https://babeljs.io/docs/en/options
 [mandatory plugins]: https://github.com/prantlf/requirejs-babel/blob/master/es6.js#L48
