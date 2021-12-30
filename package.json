@@ -36,16 +36,16 @@
     "babel-plugin-module-resolver-standalone": "0.x"
   },
   "devDependencies": {
-    "@babel/cli": "7.2.3",
-    "@babel/core": "7.4.0",
+    "@babel/cli": "7.16.0",
+    "@babel/core": "7.16.5",
     "@babel/polyfill": "7.4.0",
-    "@babel/standalone": "7.4.2",
-    "babel-plugin-module-resolver-standalone": "0.0.1",
-    "connect": "3.6.6",
-    "connect-block-favicon": "1.0.2",
-    "eslint": "5.16.0",
+    "@babel/standalone": "7.16.6",
+    "babel-plugin-module-resolver-standalone": "0.0.2",
+    "connect": "3.7.0",
+    "connect-block-favicon": "1.0.4",
+    "eslint": "8.5.0",
     "requirejs": "^2.3.6",
-    "serve-static": "1.13.2"
+    "serve-static": "1.14.2"
   },
   "keywords": [
     "requirejs-plugin",
