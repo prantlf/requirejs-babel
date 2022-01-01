@@ -25,14 +25,20 @@
     "node": ">=6"
   },
   "main": "es6.js",
+  "files": [
+    "es6.js"
+  ],
   "scripts": {
     "prepare": "npm run generate && npm run optimize",
-    "generate": "npm run generate:helpers && npm run minify:helpers && npm run minify:polyfill && npm run minify:requirejs",
-    "generate:helpers": "babel-external-helpers -t global > demo-polyfill/babel-helpers.js",
-    "minify:helpers": "terser -o demo-polyfill/babel-helpers.min.js -cm --comments false --source-map includeSources --source-map url=babel-helpers.min.js.map demo-polyfill/babel-helpers.js",
-    "minify:polyfill": "terser -o demo-polyfill/babel-polyfill.min.js -cm --comments false --source-map includeSources --source-map url=babel-polyfill.min.js.map node_modules/@babel/polyfill/dist/polyfill.js",
-    "minify:requirejs": "terser -o demo-polyfill/require.min.js -cm --comments false --source-map includeSources --source-map url=require.min.js.map node_modules/requirejs/require.js",
-    "optimize": "r.js -o demo/build.config.js && r.js -o demo-polyfill/build.config.js",
+    "generate": "npm run create:helpers && npm run create:polyfills && npm run minify:helpers && npm run minify:polyfills && npm run minify:requirejs",
+    "create:helpers": "babel-external-helpers -t global > demo-polyfill/babel-helpers.js",
+    "create:polyfills": "rollup -p @rollup/plugin-commonjs -p @rollup/plugin-node-resolve -f iife --sourcemap -o demo-polyfill/babel-polyfills.js babel-polyfills.src.js",
+    "minify:helpers": "terser -cm --comments false --source-map includeSources --source-map url=babel-helpers.min.js.map -o demo-polyfill/babel-helpers.min.js demo-polyfill/babel-helpers.js",
+    "minify:polyfills": "terser -cm --comments false --source-map includeSources --source-map url=babel-polyfills.min.js.map --source-map content=demo-polyfill/babel-polyfills.js.map -o demo-polyfill/babel-polyfills.min.js demo-polyfill/babel-polyfills.js",
+    "minify:requirejs": "terser -cm --comments false --source-map includeSources --source-map url=require.min.js.map -o demo-polyfill/require.min.js node_modules/requirejs/require.js",
+    "optimize": "npm run optimize:demo && npm run optimize:demo-polyfill",
+    "optimize:demo": "r.js -o demo/build.config.js",
+    "optimize:demo-polyfill": "r.js -o demo-polyfill/build.config.js",
     "test": "eslint es6.js"
   },
   "release": {
@@ -57,15 +63,19 @@
   "devDependencies": {
     "@babel/cli": "^7.16.0",
     "@babel/core": "^7.16.5",
-    "@babel/polyfill": "^7.4.0",
     "@babel/standalone": "^7.16.6",
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-node-resolve": "^13.1.2",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/git": "^10.0.1",
     "babel-plugin-module-resolver-standalone": "^0.0.2",
     "connect": "^3.7.0",
     "connect-block-favicon": "^1.0.4",
+    "core-js": "^3.20.1",
     "eslint": "^8.5.0",
+    "regenerator-runtime": "^0.13.9",
     "requirejs": "^2.3.6",
+    "rollup": "^2.62.0",
     "serve-static": "^1.14.2",
     "terser": "^5.10.0"
   },

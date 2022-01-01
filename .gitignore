@@ -2,5 +2,6 @@
 *.map
 *.min.js
 babel-helpers.js
+babel-polyfills.js
 main-built.js
 node_modules

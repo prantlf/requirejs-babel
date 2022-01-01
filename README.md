@@ -15,10 +15,8 @@ A [Babel] loader plugin for [RequireJS]. This is a fork of the [requirejs-babel 
 This module can be installed in your project using [NPM] or [Yarn]. Make sure, that you use [Node.js] version 6 or newer.
 
 ```sh
-npm install --save-dev requirejs-babel7 @babel/standalone babel-plugin-module-resolver-standalone
-```
-
-```sh
+npm i -D requirejs-babel7 @babel/standalone babel-plugin-module-resolver-standalone
+pnpm i -D requirejs-babel7 @babel/standalone babel-plugin-module-resolver-standalone
 yarn add requirejs-babel7 @babel/standalone babel-plugin-module-resolver-standalone
 ```
 
@@ -44,14 +42,14 @@ define(['es6!your-es6-module'], function (module) {
 });
 ```
 
-You can use the ES6 module syntax in modules loaded by the `es6!` plugin including the keyword `import` for loading nested dependencies.
+You can use the ES6 module syntax in modules loaded by the `es6!` plugin including the keyword `import` for loading nested dependencies. The plugin `es6!` has to be used only in the topmost `require` or `define` statement.
 
-If you use the RequireJS optimizer `r.js`, you have to exclude Babel with the module-resolver plugin and bundle the requirejs-babel7 plugin without the compiling functionality by adding the following to the RequireJS build configuration:
+If you use the RequireJS optimizer `r.js`, you have to exclude Babel with the module-resolver plugin and bundle the `es6`` plugin without the compiling functionality by adding the following to the RequireJS build configuration:
 
 ```js
 exclude: ['babel', 'babel-plugin-module-resolver'],
 pragmasOnSave: {
-  excludeBabel: true
+  excludeBabel: true // removes the transpiling code from es6.js
 }
 ```
 
@@ -66,29 +64,42 @@ open http://localhost:8967/demo/normal.html
 
 If you are going to use ES6 classes, you will need to add the `external-helpers` plugin and include a script with Babel external helpers. If you are going to use `async`/`await` keywords, you will need to add the `transform-async-to-generator` plugin and include the script with Babel polyfills. Depending on the target web browser, which you need to support, you can enable presets `es2015` (default), `es2016` or `es2017`.
 
-Install `@babel/cli` for generating Babel helpers and `@babel/polyfill`, if you need it:
+Install `@babel/cli` for generating Babel helpers and polyfills, if you need them:
 
 ```sh
-npm install --save-dev @babel/cli @babel/core @babel/polyfill
-```
-
-```sh
-yarn add @babel/cli @babel/core @babel/polyfill
+npm i -D @babel/cli @babel/core core-js regenerator-runtime
+pnpm i -D @babel/cli @babel/core core-js regenerator-runtime
+yarn add @babel/cli @babel/core core-js regenerator-runtime
 ```
 
 Generate a script with Babel helpers:
 
 ```sh
-babel-external-helpers -t var > babel-helpers.js
+babel-external-helpers -t global > babel-helpers.js
 ```
 
-Add the following RequireJS configuration:
+Generate a script with Babel polyfills (the package `@babel/polyfill` was deprecated), if you need them:
+
+```sh
+rollup -p @rollup/plugin-commonjs -p @rollup/plugin-node-resolve \
+  -f iife --sourcemap -o babel-polyfills.js babel-polyfills.src.js
+```
+
+From the following `babel-polyfills.src.js`:
+
+```js
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
+```
+
+Add the following RequireJS configuration, depending on your supported targets:
 
 ```js
 config: {
   es6: {
     extraPlugins: ['transform-async-to-generator', 'external-helpers'],
-    presets: ['es2015']
+    presets: ['es2015'],
+    targets: 'ie 11'
   }
 }
 ```
@@ -113,10 +124,10 @@ resolveModuleSource: function (sourcePath, currentFile, opts) {
 }
 ```
 
-Before you load the main application module by `require`, make sure, that you included babel helpers and Babe polyfills, if you need it. For example:
+Before you load the main application module by `require`, make sure, that you included Babel helpers and polyfills, if you need them. For example:
 
 ```html
-<script src="node_modules/@babel/polyfill/dist/polyfill.js"></script>
+<script src="babel-polyfills.js"></script>
 <script src="babel-helpers.js"></script>
 ```
 

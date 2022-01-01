@@ -1,9 +1,11 @@
 {
   "search.exclude": {
     "**/node_modules": true,
-    "**/*.min.js*": true,
-    "**/babel-helpers*": true,
-    "**/main-built*": true,
-    "package-lock.json": true
+    "**/*.min.js": true,
+    "**/*.map": true,
+    "**/babel-helpers.js": true,
+    "**/babel-polyfills.js": true,
+    "**/main-built.js": true,
+    "pnpm-lock.yaml": true
   }
 }
