@@ -77,7 +77,7 @@ define([
         options[key] = defaultOptions[key];
       }
       options.sourceFileName = sourceFileName;
-      options.sourceMap = config.isBuild ? false : 'inline';
+      options.sourceMap = (!config.isBuild || config.generateSourceMaps) && 'inline';
 
       fetchText(url, function (text) {
         var code;
@@ -91,7 +91,7 @@ define([
           buildMap[name] = code;
         }
 
-        onload.fromText(code); 
+        onload.fromText(code);
       });
     },
 
