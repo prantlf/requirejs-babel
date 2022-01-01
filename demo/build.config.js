@@ -13,6 +13,8 @@
   exclude: ['babel', 'babel-plugin-module-resolver'],
 
   optimize: 'none',
+  generateSourceMaps: true,
+  preserveLicenseComments: false,
 
   pragmasOnSave: {
     excludeBabel: true

@@ -13,7 +13,8 @@
   config: {
     es6: {
       extraPlugins: ['transform-async-to-generator', 'external-helpers'],
-      presets: ['es2015']
+      presets: ['es2015'],
+      targets: 'ie 11'
     }
   },
 

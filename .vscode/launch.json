@@ -1,0 +1,34 @@
+{
+  // Pro informace o možných atributech použijte technologii IntelliSense.
+  // Umístěním ukazatele myši zobrazíte popisy existujících atributů.
+  // Další informace najdete tady: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "opt",
+      "request": "launch",
+      "runtimeArgs": [
+        "run",
+        "optimize"
+      ],
+      "runtimeExecutable": "npm",
+      "type": "pwa-node"
+    },
+    {
+      "type": "pwa-node",
+      "request": "launch",
+      "name": "optimize",
+      "skipFiles": [],
+      "program": "${workspaceFolder}/node_modules/requirejs/bin/r.js",
+      "args": ["-o", "demo/build.config.js"]
+    },
+    {
+      "type": "pwa-node",
+      "request": "launch",
+      "name": "optimize-polyfill",
+      "skipFiles": [],
+      "program": "${workspaceFolder}/node_modules/requirejs/bin/r.js",
+      "args": ["-o", "demo-polyfill/build.config.js"]
+    }
+ ]
+}

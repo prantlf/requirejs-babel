@@ -1,6 +1,7 @@
 {
   "search.exclude": {
     "**/node_modules": true,
+    "**/*.min.js*": true,
     "**/babel-helpers*": true,
     "**/main-built*": true,
     "package-lock.json": true
