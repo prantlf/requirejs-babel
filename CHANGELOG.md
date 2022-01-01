@@ -1,3 +1,11 @@
+## [1.0.2](https://github.com/prantlf/requirejs-babel/compare/v1.0.1...v1.0.2) (2022-01-01)
+
+
+### Bug Fixes
+
+* Do not use the method hasOwnProperty directly ([8da13e4](https://github.com/prantlf/requirejs-babel/commit/8da13e4e7720fe07f3d21eaec936adcc16b52c15))
+* Generate source maps in the runtime mode and in the build mode if they are enabled ([8fdb6cf](https://github.com/prantlf/requirejs-babel/commit/8fdb6cf30c34dda7b384d238773411b4d2ce9bdb))
+
 ## [1.0.1](https://github.com/prantlf/requirejs-babel/compare/v1.0.0...v1.0.1) (2019-04-02)
 
 
