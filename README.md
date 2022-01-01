@@ -1,8 +1,8 @@
 # Babel Plugin for RequireJS
 
-[![NPM version](https://badge.fury.io/js/requirejs-babel7.png)](http://badge.fury.io/js/requirejs-babel7)
-[![Build Status](https://github.com/prantlf/requirejs-babel/workflows/Test%20or%20Release/badge.svg)](https://github.com/prantlf/requirejs-babel/actions)
-[![devDependency Status](https://david-dm.org/prantlf/requirejs-babel/dev-status.svg)](https://david-dm.org/prantlf/requirejs-babel#info=devDependencies)
+[![Latest version](https://img.shields.io/npm/v/requirejs-babel7)
+ ![Dependency status](https://img.shields.io/librariesio/release/npm/requirejs-babel7)
+](https://www.npmjs.com/package/requirejs-babel7)
 
 A [Babel] loader plugin for [RequireJS]. This is a fork of the [requirejs-babel project] to support [Babel 7]. Look for the support of Babel 5, 6 and 7 in the following NPM modules:
 
