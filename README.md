@@ -133,8 +133,8 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## License
 
-Copyright (c) 2019-2021 Ferdinand Prantl<br>
-Copyright (c) 2015-2019 Mykhailo Kachanovskyi
+Copyright (c) 2015-2019 Mykhailo Kachanovskyi<br>
+Copyright (c) 2019-2022 Ferdinand Prantl
 
 Licensed under the MIT license.
 
