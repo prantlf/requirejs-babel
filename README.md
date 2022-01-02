@@ -126,6 +126,16 @@ resolveModuleSource: function (sourcePath, currentFile, opts) {
 }
 ```
 
+The default implementation of `resolveModuleSource` ensures that every JavaScript dependency will be converted:
+
+```js
+function (sourcePath) {
+  if (sourcePath.indexOf('!') < 0) {
+    return 'es6!' + sourcePath;
+  }
+}
+```
+
 Before you load the main application module by `require`, make sure, that you included Babel helpers and polyfills, if you need them. For example:
 
 ```html
