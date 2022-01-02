@@ -44,6 +44,8 @@ define(['es6!your-es6-module'], function (module) {
 
 You can use the ES6 module syntax in modules loaded by the `es6!` plugin including the keyword `import` for loading nested dependencies. The plugin `es6!` has to be used only in the topmost `require` or `define` statement.
 
+This plugin transpiles only ES6 source files. If it detects a statement calling functions `define`, `require` or `require.config` on the root level of the source file, it will return the text of the source file as-is. Source files, which are already AMD modules, are assumed to contain ES5 only.
+
 If you use the RequireJS optimizer `r.js`, you have to exclude Babel with the module-resolver plugin and bundle the `es6`` plugin without the compiling functionality by adding the following to the RequireJS build configuration:
 
 ```js
@@ -140,7 +142,7 @@ open http://localhost:8967/demo-polyfill/normal.html
 
 ## Contributing
 
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality.
+In lieu of a formal styleguide, take care to maintain the existing coding style. Lint and test your code.
 
 ## License
 

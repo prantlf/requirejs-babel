@@ -5,16 +5,6 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "opt",
-      "request": "launch",
-      "runtimeArgs": [
-        "run",
-        "optimize"
-      ],
-      "runtimeExecutable": "npm",
-      "type": "pwa-node"
-    },
-    {
       "type": "pwa-node",
       "request": "launch",
       "name": "optimize",
