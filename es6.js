@@ -16,20 +16,25 @@ define([
       var xhr = new XMLHttpRequest();
       xhr.open('GET', url, true);
       xhr.onreadystatechange = function () {
-        // Do not explicitly handle errors, those should be
-        // visible via console output in the browser.
         if (xhr.readyState === 4) {
-          callback(xhr.responseText);
+          if (xhr.status === 200) {
+            callback(null, xhr.responseText);
+          } else {
+            callback(new Error(xhr.statusText));
+          }
         }
       };
       xhr.send(null);
     };
   } else if (typeof process !== 'undefined' && process.versions
              && process.versions.node) {
-    // Using special require.nodeRequire, something added by r.js.
     var fs = require.nodeRequire('fs');
     fetchText = function (path, callback) {
-      callback(fs.readFileSync(path, 'utf8'));
+      try {
+        callback(null, fs.readFileSync(path, 'utf8'));
+      } catch (error) {
+        callback(error);
+      }
     };
   }
 
@@ -79,7 +84,11 @@ define([
       options.sourceFileName = sourceFileName;
       options.sourceMap = (!config.isBuild || config.generateSourceMaps) && 'inline';
 
-      fetchText(url, function (text) {
+      fetchText(url, function (error, text) {
+        if (error) {
+          return onload.error(error);
+        }
+
         var code;
         try {
           code = babel.transform(text, options).code;
