@@ -1,3 +1,12 @@
+## [1.0.3](https://github.com/prantlf/requirejs-babel/compare/v1.0.2...v1.0.3) (2022-01-02)
+
+
+### Bug Fixes
+
+* Do not append the .js extension to module names relative to the current path ([8f93a0e](https://github.com/prantlf/requirejs-babel/commit/8f93a0e60f2eb96cd16aafd4a46de90a409f0b1b))
+* Do not transpile source files already in the AMD format ([919a891](https://github.com/prantlf/requirejs-babel/commit/919a89195d7019cfddebc18b4580a3f3b71a0a16))
+* Propagate errors from loading missing files ([d69c42d](https://github.com/prantlf/requirejs-babel/commit/d69c42d2d45e0c3b8e1441485bd2b5669f0a84da))
+
 ## [1.0.2](https://github.com/prantlf/requirejs-babel/compare/v1.0.1...v1.0.2) (2022-01-01)
 
 
