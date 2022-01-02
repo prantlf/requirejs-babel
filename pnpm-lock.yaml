@@ -13,6 +13,7 @@ specifiers:
   connect-block-favicon: ^1.0.4
   core-js: ^3.20.1
   eslint: ^8.5.0
+  lit-html: ^2.0.2
   regenerator-runtime: ^0.13.9
   requirejs: ^2.3.6
   rollup: ^2.62.0
@@ -32,6 +33,7 @@ devDependencies:
   connect-block-favicon: 1.0.4
   core-js: 3.20.1
   eslint: 8.5.0
+  lit-html: 2.0.2
   regenerator-runtime: 0.13.9
   requirejs: 2.3.6
   rollup: 2.62.0
@@ -388,6 +390,10 @@ packages:
     resolution: {integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==}
     dependencies:
       '@types/node': 17.0.5
+    dev: true
+
+  /@types/trusted-types/2.0.2:
+    resolution: {integrity: sha512-F5DIZ36YVLE+PN+Zwws4kJogq47hNgX3Nx6WyDJ3kcplxyke3XIzB8uK5n/Lpm1HBsbGzd6nmGehL8cPekP+Tg==}
     dev: true
 
   /acorn-jsx/5.3.2_acorn@8.7.0:
@@ -1165,6 +1171,12 @@ packages:
     dependencies:
       prelude-ls: 1.2.1
       type-check: 0.4.0
+    dev: true
+
+  /lit-html/2.0.2:
+    resolution: {integrity: sha512-dON7Zg8btb14/fWohQLQBdSgkoiQA4mIUy87evmyJHtxRq7zS6LlC32bT5EPWiof5PUQaDpF45v2OlrxHA5Clg==}
+    dependencies:
+      '@types/trusted-types': 2.0.2
     dev: true
 
   /lodash.merge/4.6.2:

@@ -73,6 +73,7 @@
     "connect-block-favicon": "^1.0.4",
     "core-js": "^3.20.1",
     "eslint": "^8.5.0",
+    "lit-html": "^2.0.2",
     "regenerator-runtime": "^0.13.9",
     "requirejs": "^2.3.6",
     "rollup": "^2.62.0",
