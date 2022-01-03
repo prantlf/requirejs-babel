@@ -10,6 +10,8 @@ A [Babel] loader plugin for [RequireJS]. This is a fork of the [requirejs-babel 
 * [Babel 6] - [requirejs-babel6]
 * [Babel 7] - [requirejs-babel7]
 
+The official [RequireJS optimizer] (`r.js`) does not wire up source maps from the original (not transpiled) sources to the source map of the output bundle. It makes using Babel or other transpilers unfeasible for serious work. If you want the proper support for source maps, replace the official optimizer package ([`requirejs`]) with the forked [`@prantlf/requirejs`], which is fixed.
+
 ## Installation
 
 This module can be installed in your project using [NPM], [PNPM] or [Yarn]. Make sure, that you use [Node.js] version 6 or newer.
@@ -167,6 +169,7 @@ Licensed under the MIT license.
 [Babel 6]: https://babeljs.io/blog/2015/10/29/6.0.0
 [Babel 7]: https://babeljs.io/blog/2018/08/27/7.0.0
 [RequireJS]: http://requirejs.org
+[RequireJS optimizer]: https://requirejs.org/docs/optimization.html
 [requirejs-babel project]: https://github.com/mikach/requirejs-babel
 [requirejs-babel]: https://www.npmjs.com/package/requirejs-babel
 [requirejs-babel6]: https://www.npmjs.com/package/requirejs-babel6
@@ -174,6 +177,8 @@ Licensed under the MIT license.
 [@babel/standalone]: https://www.npmjs.com/package/@babel/standalone
 [@babel/polyfill]: https://www.npmjs.com/package/@babel/polyfill
 [babel-polyfills-generator]: https://www.npmjs.com/package/babel-polyfills-generator
+[`requirejs`]: https://www.npmjs.com/package/requirejs
+[`@prantlf/requirejs`]: https://www.npmjs.com/package/@prantlf/requirejs
 [Node.js]: http://nodejs.org/
 [NPM]: https://www.npmjs.com/
 [PNPM]: https://pnpm.io/
