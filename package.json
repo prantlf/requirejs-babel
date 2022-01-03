@@ -58,7 +58,8 @@
   },
   "peerDependencies": {
     "@babel/standalone": "7.x",
-    "babel-plugin-module-resolver-standalone": "0.x"
+    "babel-plugin-module-resolver-standalone": "0.x",
+    "babel-plugin-amd-checker": "0.x"
   },
   "devDependencies": {
     "@babel/cli": "^7.16.0",
@@ -68,6 +69,7 @@
     "@rollup/plugin-node-resolve": "^13.1.2",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/git": "^10.0.1",
+    "babel-plugin-amd-checker": "^0.0.1",
     "babel-plugin-module-resolver-standalone": "^0.0.2",
     "connect": "^3.7.0",
     "connect-block-favicon": "^1.0.4",

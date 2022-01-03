@@ -12,15 +12,15 @@ A [Babel] loader plugin for [RequireJS]. This is a fork of the [requirejs-babel 
 
 ## Installation
 
-This module can be installed in your project using [NPM] or [Yarn]. Make sure, that you use [Node.js] version 6 or newer.
+This module can be installed in your project using [NPM], or [Yarn]. Make sure, that you use [Node.js] version 6 or newer.
 
 ```sh
-npm i -D requirejs-babel7 @babel/standalone babel-plugin-module-resolver-standalone
-pnpm i -D requirejs-babel7 @babel/standalone babel-plugin-module-resolver-standalone
-yarn add requirejs-babel7 @babel/standalone babel-plugin-module-resolver-standalone
+npm i -D requirejs-babel7 @babel/standalone babel-plugin-module-resolver-standalone babel-plugin-amd-checker
+pnpm i -D requirejs-babel7 @babel/standalone babel-plugin-module-resolver-standalone babel-plugin-amd-checker
+yarn add requirejs-babel7 @babel/standalone babel-plugin-module-resolver-standalone babel-plugin-amd-checker
 ```
 
-This plugin has been tested to work with `@babel/standalone 7.x` and `babel-plugin-module-resolver-standalone 0.x`, which are required as peer dependencies.
+This plugin has been tested to work with `@babel/standalone 7.x`, `babel-plugin-module-resolver-standalone 0.x` and `babel-plugin-amd-checker 0.x`, which are required as peer dependencies.
 
 ## Usage
 
@@ -30,7 +30,8 @@ Add the following paths to the RequireJS configuration:
 paths: {
   es6: 'node_modules/requirejs-babel7/es6',
   babel: 'node_modules/@babel/standalone/babel.min',
-  'babel-plugin-module-resolver': 'node_modules/babel-plugin-module-resolver-standalone/index'
+  'babel-plugin-module-resolver': 'node_modules/babel-plugin-module-resolver-standalone/index',
+  'babel-plugin-amd-checker': 'node_modules/babel-plugin-amd-checker/index'
 }
 ```
 
@@ -49,7 +50,7 @@ This plugin transpiles only ES6 source files. If it detects a statement calling 
 If you use the RequireJS optimizer `r.js`, you have to exclude Babel with the module-resolver plugin and bundle the `es6`` plugin without the compiling functionality by adding the following to the RequireJS build configuration:
 
 ```js
-exclude: ['babel', 'babel-plugin-module-resolver'],
+exclude: ['babel', 'babel-plugin-module-resolver', 'babel-plugin-amd-checker'],
 pragmasOnSave: {
   excludeBabel: true // removes the transpiling code from es6.js
 }

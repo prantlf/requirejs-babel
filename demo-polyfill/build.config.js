@@ -7,7 +7,8 @@
   paths: {
     es6: '../es6',
     babel: '../node_modules/@babel/standalone/babel.min',
-    'babel-plugin-module-resolver': '../node_modules/babel-plugin-module-resolver-standalone/index'
+    'babel-plugin-module-resolver': '../node_modules/babel-plugin-module-resolver-standalone/index',
+    'babel-plugin-amd-checker': '../node_modules/babel-plugin-amd-checker/index'
   },
 
   config: {
@@ -18,7 +19,7 @@
     }
   },
 
-  exclude: ['babel', 'babel-plugin-module-resolver'],
+  exclude: ['babel', 'babel-plugin-module-resolver', 'babel-plugin-amd-checker'],
 
   optimize: 'uglify2',
   generateSourceMaps: true,

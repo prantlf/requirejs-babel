@@ -1,10 +1,10 @@
 define([
 //>>excludeStart('excludeBabel', pragmas.excludeBabel)
-  'babel', 'babel-plugin-module-resolver', 'module'
+  'babel', 'babel-plugin-module-resolver', 'babel-plugin-amd-checker', 'module'
 //>>excludeEnd('excludeBabel')
 ], function(
 //>>excludeStart('excludeBabel', pragmas.excludeBabel)
-  babel, moduleResolver, module
+  babel, moduleResolver, amdChecker, module
 //>>excludeEnd('excludeBabel')
 ) {
 //>>excludeStart('excludeBabel', pragmas.excludeBabel)
@@ -35,75 +35,6 @@ define([
         callback(null, fs.readFileSync(path, 'utf8'));
       } catch (error) {
         callback(error);
-      }
-    };
-  }
-
-  // Detects a call to define, require or require.config functions.
-  function isDefineOrRequireOrRequireConfig(path) {
-    var expr, callee, args, arg;
-
-    if (!path.isExpressionStatement()) return false;
-
-    expr = path.get("expression");
-    if (!expr.isCallExpression()) return false;
-
-    args = expr.get("arguments");
-    if (args.length === 0) return false;
-
-    callee = expr.get("callee");
-    // define('name', [deps], factory)
-    if (callee.isIdentifier({ name: "define" })) {
-      arg = args.shift();
-      if (arg.isStringLiteral()) {
-        if (args.length === 0) return false;
-        arg = args.shift();
-      }
-      if (arg.isArrayExpression()) {
-        arg = args.shift();
-        return arg.isFunctionExpression() || arg.isObjectExpression();
-      }
-      return arg.isFunctionExpression() || arg.isObjectExpression();
-    }
-    // require([deps], success, error)
-    if (callee.isIdentifier({ name: "require" })) {
-      arg = args.shift();
-      if (!arg.isArrayExpression() || args.length === 0) return false;
-      arg = args.shift();
-      return arg.isFunctionExpression();
-    }
-    // require.config(object)
-    return callee.isMemberExpression() &&
-      callee.get('object').isIdentifier({ name: "require" }) &&
-      callee.get('property').isIdentifier({ name: "config" });
-  }
-
-  // Thrown to abort the transpilation of an already AMD module.
-  function AmdDetected() {}
-  AmdDetected.prototype = Object.create(Error.prototype)
-
-  // Throws if the module is an AMD module, otherwise does nothing.
-  function checkAmd(path) {
-    var body = path.get('body');
-    var length = body.length;
-    var i, node;
-    for (i = 0; i < length; ++i) {
-      node = body[i];
-      // If import or export is detected, transform right away.
-      if (node.isImportDeclaration() ||
-          node.isExportDeclaration()) break;
-      // If define or require is detected, abort right away.
-      if (isDefineOrRequireOrRequireConfig(node)) {
-        throw new AmdDetected();
-      }
-    }
-  }
-
-  // Throws if the module is an AMD module, otherwise does nothing.
-  function amdChecker() {
-    return {
-      visitor: {
-        Program: { enter: checkAmd }
       }
     };
   }
@@ -170,7 +101,7 @@ define([
         try {
           code = babel.transform(text, options).code;
         } catch (error) {
-          if (!(error instanceof AmdDetected)) {
+          if (!(error instanceof amdChecker.AmdDetected)) {
             return onload.error(error);
           }
           code = text;

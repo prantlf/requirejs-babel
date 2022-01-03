@@ -8,6 +8,7 @@ specifiers:
   '@rollup/plugin-node-resolve': ^13.1.2
   '@semantic-release/changelog': ^6.0.1
   '@semantic-release/git': ^10.0.1
+  babel-plugin-amd-checker: ^0.0.1
   babel-plugin-module-resolver-standalone: ^0.0.2
   connect: ^3.7.0
   connect-block-favicon: ^1.0.4
@@ -28,6 +29,7 @@ devDependencies:
   '@rollup/plugin-node-resolve': 13.1.2_rollup@2.62.0
   '@semantic-release/changelog': 6.0.1
   '@semantic-release/git': 10.0.1
+  babel-plugin-amd-checker: 0.0.1
   babel-plugin-module-resolver-standalone: 0.0.2
   connect: 3.7.0
   connect-block-favicon: 1.0.4
@@ -467,6 +469,11 @@ packages:
   /at-least-node/1.0.0:
     resolution: {integrity: sha512-+q/t7Ekv1EDY2l6Gda6LLiX14rU9TV20Wa3ofeQmwPFZbOMo9DXrLbOjFaaclkXKWidIaopwAObQDqwWtGUjqg==}
     engines: {node: '>= 4.0.0'}
+    dev: true
+
+  /babel-plugin-amd-checker/0.0.1:
+    resolution: {integrity: sha512-pRuCh5oL9OR+y3LRwf/dAxKNAFNS1Ldrv//0PsvwV+63Ad5EQASDxmqE2uu3rw39d925Pckt0JwsbGgmqh28sQ==}
+    engines: {node: '>=6'}
     dev: true
 
   /babel-plugin-module-resolver-standalone/0.0.2:
