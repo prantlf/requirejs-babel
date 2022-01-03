@@ -12,7 +12,7 @@ A [Babel] loader plugin for [RequireJS]. This is a fork of the [requirejs-babel 
 
 ## Installation
 
-This module can be installed in your project using [NPM], or [Yarn]. Make sure, that you use [Node.js] version 6 or newer.
+This module can be installed in your project using [NPM], [PNPM] or [Yarn]. Make sure, that you use [Node.js] version 6 or newer.
 
 ```sh
 npm i -D requirejs-babel7 @babel/standalone babel-plugin-module-resolver-standalone babel-plugin-amd-checker
@@ -174,6 +174,7 @@ Licensed under the MIT license.
 [@babel/standalone]: https://github.com/babel/babel/tree/master/packages/babel-standalone
 [Node.js]: http://nodejs.org/
 [NPM]: https://www.npmjs.com/
+[PNPM]: https://pnpm.io/
 [Yarn]: https://yarnpkg.com/
 [simple demo]: https://github.com/prantlf/requirejs-babel/tree/master/demo
 [advanced demo]: https://github.com/prantlf/requirejs-babel/tree/master/demo
