@@ -67,32 +67,32 @@ open http://localhost:8967/demo/normal.html
 
 If you are going to use ES6 classes, you will need to add the `external-helpers` plugin and include a script with Babel external helpers. If you are going to use `async`/`await` keywords, you will need to add the `transform-async-to-generator` plugin and include the script with Babel polyfills. Depending on the target web browser, which you need to support, you can enable presets `es2015` (default), `es2016` or `es2017`.
 
-Install `@babel/cli` for generating Babel helpers and polyfills, if you need them:
+Install `@babel/cli` for generating Babel helpers, if you need them:
 
 ```sh
-npm i -D @babel/cli @babel/core core-js regenerator-runtime
-pnpm i -D @babel/cli @babel/core core-js regenerator-runtime
-yarn add @babel/cli @babel/core core-js regenerator-runtime
+npm i -D @babel/cli @babel/core
+pnpm i -D @babel/cli @babel/core
+yarn add @babel/cli @babel/core
 ```
 
-Generate a script with Babel helpers:
+If you need the polyfills, you can use [babel-polyfills-generator]; the [@babel/polyfill] package was deprecated:
+
+```sh
+npm i -D babel-polyfills-generator core-js regenerator-runtime
+pnpm i -D babel-polyfills-generator core-js regenerator-runtime
+yarn add babel-polyfills-generator core-js regenerator-runtime
+```
+
+Generate a script with Babel helpers, if you need them:
 
 ```sh
 babel-external-helpers -t global > babel-helpers.js
 ```
 
-Generate a script with Babel polyfills (the package `@babel/polyfill` was deprecated), if you need them:
+Generate a script with Babel polyfills, if you need them:
 
 ```sh
-rollup -p @rollup/plugin-commonjs -p @rollup/plugin-node-resolve \
-  -f iife --sourcemap -o babel-polyfills.js babel-polyfills.src.js
-```
-
-From the following `babel-polyfills.src.js`:
-
-```js
-import 'core-js/stable';
-import 'regenerator-runtime/runtime';
+generate-babel-polyfills demo-polyfill
 ```
 
 Add the following RequireJS configuration, depending on your supported targets:
@@ -140,8 +140,8 @@ function (sourcePath) {
 Before you load the main application module by `require`, make sure, that you included Babel helpers and polyfills, if you need them. For example:
 
 ```html
-<script src="babel-polyfills.js"></script>
-<script src="babel-helpers.js"></script>
+<script src="babel-polyfills.min.js"></script>
+<script src="babel-helpers.min.js"></script>
 ```
 
 See also an [advanced demo] project:
@@ -171,7 +171,9 @@ Licensed under the MIT license.
 [requirejs-babel]: https://www.npmjs.com/package/requirejs-babel
 [requirejs-babel6]: https://www.npmjs.com/package/requirejs-babel6
 [requirejs-babel7]: https://www.npmjs.com/package/requirejs-babel7
-[@babel/standalone]: https://github.com/babel/babel/tree/master/packages/babel-standalone
+[@babel/standalone]: https://www.npmjs.com/package/@babel/standalone
+[@babel/polyfill]: https://www.npmjs.com/package/@babel/polyfill
+[babel-polyfills-generator]: https://www.npmjs.com/package/babel-polyfills-generator
 [Node.js]: http://nodejs.org/
 [NPM]: https://www.npmjs.com/
 [PNPM]: https://pnpm.io/

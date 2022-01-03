@@ -30,11 +30,10 @@
   ],
   "scripts": {
     "prepare": "npm run generate && npm run optimize",
-    "generate": "npm run create:helpers && npm run create:polyfills && npm run minify:helpers && npm run minify:polyfills && npm run minify:requirejs",
+    "generate": "npm run generate:polyfills && npm run create:helpers && npm run minify:helpers && npm run minify:requirejs",
+    "generate:polyfills": "generate-babel-polyfills demo-polyfill",
     "create:helpers": "babel-external-helpers -t global > demo-polyfill/babel-helpers.js",
-    "create:polyfills": "rollup -p @rollup/plugin-commonjs -p @rollup/plugin-node-resolve -f iife --sourcemap -o demo-polyfill/babel-polyfills.js babel-polyfills.src.js",
     "minify:helpers": "terser -cm --comments false --source-map includeSources --source-map url=babel-helpers.min.js.map -o demo-polyfill/babel-helpers.min.js demo-polyfill/babel-helpers.js",
-    "minify:polyfills": "terser -cm --comments false --source-map includeSources --source-map url=babel-polyfills.min.js.map --source-map content=demo-polyfill/babel-polyfills.js.map -o demo-polyfill/babel-polyfills.min.js demo-polyfill/babel-polyfills.js",
     "minify:requirejs": "terser -cm --comments false --source-map includeSources --source-map url=require.min.js.map -o demo-polyfill/require.min.js node_modules/requirejs/require.js",
     "optimize": "npm run optimize:demo && npm run optimize:demo-polyfill",
     "optimize:demo": "r.js -o demo/build.config.js",
@@ -58,12 +57,12 @@
   },
   "peerDependencies": {
     "@babel/standalone": "7.x",
-    "babel-plugin-module-resolver-standalone": "0.x",
-    "babel-plugin-amd-checker": "0.x"
+    "babel-plugin-amd-checker": "0.x",
+    "babel-plugin-module-resolver-standalone": "0.x"
   },
   "devDependencies": {
-    "@babel/cli": "^7.16.0",
-    "@babel/core": "^7.16.5",
+    "@babel/cli": "^7.16.7",
+    "@babel/core": "^7.16.7",
     "@babel/standalone": "^7.16.6",
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.1.2",
@@ -71,9 +70,10 @@
     "@semantic-release/git": "^10.0.1",
     "babel-plugin-amd-checker": "^0.0.1",
     "babel-plugin-module-resolver-standalone": "^0.0.2",
+    "babel-polyfills-generator": "^0.0.1",
     "connect": "^3.7.0",
     "connect-block-favicon": "^1.0.4",
-    "core-js": "^3.20.1",
+    "core-js": "^3.20.2",
     "eslint": "^8.5.0",
     "lit-html": "^2.0.2",
     "regenerator-runtime": "^0.13.9",
