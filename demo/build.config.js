@@ -9,10 +9,14 @@
     babel: '../node_modules/@babel/standalone/babel.min',
     'babel-plugin-module-resolver': '../node_modules/babel-plugin-module-resolver-standalone/index',
     'babel-plugin-amd-checker': '../node_modules/babel-plugin-amd-checker/index',
-    'lit-html': '../node_modules/lit-html/lit-html'
+    'babel-plugin-amd-default-export': '../node_modules/babel-plugin-amd-default-export/index',
+    'lit-html': '../node_modules/lit-html'
   },
 
-  exclude: ['babel', 'babel-plugin-module-resolver', 'babel-plugin-amd-checker'],
+  exclude: [
+    'babel', 'babel-plugin-module-resolver',
+    'babel-plugin-amd-checker', 'babel-plugin-amd-default-export'
+  ],
 
   optimize: 'none',
   generateSourceMaps: true,

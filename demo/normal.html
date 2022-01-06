@@ -7,7 +7,7 @@
 <body>
   Open console tab in dev tools!
 
-  <script src="../node_modules/requirejs/@prantlf/require.js"></script>
+  <script src="../node_modules/@prantlf/requirejs/require.js"></script>
   <script>
     requirejs.config({
       paths: {
@@ -15,7 +15,8 @@
         babel: '../node_modules/@babel/standalone/babel.min',
         'babel-plugin-module-resolver': '../node_modules/babel-plugin-module-resolver-standalone/index',
         'babel-plugin-amd-checker': '../node_modules/babel-plugin-amd-checker/index',
-        'lit-html': '../node_modules/lit-html/lit-html'
+        'babel-plugin-amd-default-export': '../node_modules/babel-plugin-amd-default-export/index',
+        'lit-html': '../node_modules/lit-html'
       }
     });
   </script>

@@ -17,9 +17,12 @@ The official [RequireJS optimizer] (`r.js`) does not wire up source maps from th
 This module can be installed in your project using [NPM], [PNPM] or [Yarn]. Make sure, that you use [Node.js] version 6 or newer.
 
 ```sh
-npm i -D requirejs-babel7 @babel/standalone babel-plugin-module-resolver-standalone babel-plugin-amd-checker
-pnpm i -D requirejs-babel7 @babel/standalone babel-plugin-module-resolver-standalone babel-plugin-amd-checker
-yarn add requirejs-babel7 @babel/standalone babel-plugin-module-resolver-standalone babel-plugin-amd-checker
+npm i -D requirejs-babel7 @babel/standalone babel-plugin-module-resolver-standalone \
+  babel-plugin-amd-checker babel-plugin-amd-default-export
+pnpm i -D requirejs-babel7 @babel/standalone babel-plugin-module-resolver-standalone \
+  babel-plugin-amd-checker babel-plugin-amd-default-export
+yarn add requirejs-babel7 @babel/standalone babel-plugin-module-resolver-standalone \
+  babel-plugin-amd-checker babel-plugin-amd-default-export
 ```
 
 This plugin has been tested to work with `@babel/standalone 7.x`, `babel-plugin-module-resolver-standalone 0.x` and `babel-plugin-amd-checker 0.x`, which are required as peer dependencies.
@@ -33,7 +36,8 @@ paths: {
   es6: 'node_modules/requirejs-babel7/es6',
   babel: 'node_modules/@babel/standalone/babel.min',
   'babel-plugin-module-resolver': 'node_modules/babel-plugin-module-resolver-standalone/index',
-  'babel-plugin-amd-checker': 'node_modules/babel-plugin-amd-checker/index'
+  'babel-plugin-amd-checker': 'node_modules/babel-plugin-amd-checker/index',
+  'babel-plugin-amd-default-export': 'node_modules/babel-plugin-amd-default-export/index'
 }
 ```
 
@@ -52,7 +56,10 @@ This plugin transpiles only ES6 source files. If it detects a statement calling 
 If you use the RequireJS optimizer `r.js`, you have to exclude Babel with the module-resolver plugin and bundle the `es6`` plugin without the compiling functionality by adding the following to the RequireJS build configuration:
 
 ```js
-exclude: ['babel', 'babel-plugin-module-resolver', 'babel-plugin-amd-checker'],
+exclude: [
+  'babel', 'babel-plugin-module-resolver',
+  'babel-plugin-amd-checker', 'babel-plugin-amd-default-export'
+],
 pragmasOnSave: {
   excludeBabel: true // removes the transpiling code from es6.js
 }

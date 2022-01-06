@@ -10,13 +10,14 @@ specifiers:
   '@semantic-release/changelog': ^6.0.1
   '@semantic-release/git': ^10.0.1
   babel-plugin-amd-checker: ^0.0.1
+  babel-plugin-amd-default-export: ^0.0.1
   babel-plugin-module-resolver-standalone: ^0.0.2
   babel-polyfills-generator: ^0.0.1
   connect: ^3.7.0
   connect-block-favicon: ^1.0.4
   core-js: ^3.20.2
   eslint: ^8.5.0
-  lit-html: ^2.0.2
+  lit-html: ^1
   regenerator-runtime: ^0.13.9
   rollup: ^2.62.0
   serve-static: ^1.14.2
@@ -32,13 +33,14 @@ devDependencies:
   '@semantic-release/changelog': 6.0.1
   '@semantic-release/git': 10.0.1
   babel-plugin-amd-checker: 0.0.1
+  babel-plugin-amd-default-export: 0.0.1
   babel-plugin-module-resolver-standalone: 0.0.2
   babel-polyfills-generator: 0.0.1_371e3aa1a3bac271eaa3f39d8a6bf8e5
   connect: 3.7.0
   connect-block-favicon: 1.0.4
   core-js: 3.20.2
   eslint: 8.5.0
-  lit-html: 2.0.2
+  lit-html: 1.4.1
   regenerator-runtime: 0.13.9
   rollup: 2.62.0
   serve-static: 1.14.2
@@ -402,10 +404,6 @@ packages:
       '@types/node': 17.0.5
     dev: true
 
-  /@types/trusted-types/2.0.2:
-    resolution: {integrity: sha512-F5DIZ36YVLE+PN+Zwws4kJogq47hNgX3Nx6WyDJ3kcplxyke3XIzB8uK5n/Lpm1HBsbGzd6nmGehL8cPekP+Tg==}
-    dev: true
-
   /acorn-jsx/5.3.2_acorn@8.7.0:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
     peerDependencies:
@@ -481,6 +479,11 @@ packages:
 
   /babel-plugin-amd-checker/0.0.1:
     resolution: {integrity: sha512-pRuCh5oL9OR+y3LRwf/dAxKNAFNS1Ldrv//0PsvwV+63Ad5EQASDxmqE2uu3rw39d925Pckt0JwsbGgmqh28sQ==}
+    engines: {node: '>=6'}
+    dev: true
+
+  /babel-plugin-amd-default-export/0.0.1:
+    resolution: {integrity: sha512-kkMBNHQY2iv26Fc0hMhCUm79kkuAAb2cEtuxwWsnTZFR/jg6fegnkhlSrynylRU7Ak1wpDFDNfsEIclDwOZ/2Q==}
     engines: {node: '>=6'}
     dev: true
 
@@ -1212,10 +1215,8 @@ packages:
       type-check: 0.4.0
     dev: true
 
-  /lit-html/2.0.2:
-    resolution: {integrity: sha512-dON7Zg8btb14/fWohQLQBdSgkoiQA4mIUy87evmyJHtxRq7zS6LlC32bT5EPWiof5PUQaDpF45v2OlrxHA5Clg==}
-    dependencies:
-      '@types/trusted-types': 2.0.2
+  /lit-html/1.4.1:
+    resolution: {integrity: sha512-B9btcSgPYb1q4oSOb/PrOT6Z/H+r6xuNzfH4lFli/AWhYwdtrgQkQWBbIc6mdnf6E2IL3gDXdkkqNktpU0OZQA==}
     dev: true
 
   /lodash.merge/4.6.2:

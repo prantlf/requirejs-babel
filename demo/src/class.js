@@ -1,5 +1,5 @@
 import sum from './sum';
-import { html, render } from 'lit-html';
+import { html, render } from 'lit-html/lit-html';
 
 console.log(sum(1,2));
 
