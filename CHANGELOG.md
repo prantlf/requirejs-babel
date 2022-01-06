@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/prantlf/requirejs-babel/compare/v1.0.4...v1.0.5) (2022-01-06)
+
+
+### Bug Fixes
+
+* Fix resolving relative paths, ensure single default export ([67acc5e](https://github.com/prantlf/requirejs-babel/commit/67acc5eb214f8c68ff9bfac2d0ad6f071322410c))
+
 ## [1.0.3](https://github.com/prantlf/requirejs-babel/compare/v1.0.2...v1.0.3) (2022-01-02)
 
 
