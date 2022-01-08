@@ -123,7 +123,10 @@ You can use any [options] of [babel.transform] for configuring the `es6` plugin.
 // import * from 'es6module.mjs' -> define(['es6!es6module])
 fileExtension: '.mjs',
 resolveModuleSource: function (sourcePath, currentFile, opts) {
-  if (sourcePath.indexOf('!') < 0) {
+  // Ignore paths with other plugins applied and the three built-in
+  // pseudo-modules of RequireJS.
+  if (sourcePath.indexOf('!') < 0 && sourcePath !== 'require' &&
+      sourcePath !== 'module' && sourcePath !== 'exports') {
     var lengthWithoutExtension = sourcePath.length - 3
     if (sourcePath.lastIndexOf('.js') === lengthWithoutExtension) {
       return sourcePath.substr(0, lengthWithoutExtension)
