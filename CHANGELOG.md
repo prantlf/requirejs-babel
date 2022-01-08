@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/prantlf/requirejs-babel/compare/v1.0.5...v1.0.6) (2022-01-08)
+
+
+### Bug Fixes
+
+* Do not prefix by es6! the three pseudo-modules - require, module and exports ([067d41d](https://github.com/prantlf/requirejs-babel/commit/067d41d4132d8551cba32946a5445bb376f307dc))
+
 ## [1.0.5](https://github.com/prantlf/requirejs-babel/compare/v1.0.4...v1.0.5) (2022-01-06)
 
 
