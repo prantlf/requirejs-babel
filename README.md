@@ -10,6 +10,8 @@ A [Babel] loader plugin for [RequireJS]. This is a fork of the [requirejs-babel 
 * [Babel 6] - [requirejs-babel6]
 * [Babel 7] - [requirejs-babel7]
 
+More complicated RequireJS projects which mix ESM with AMD modules will need to replace official AMD module wrapping plugin ([`@babel/plugin-transform-modules-amd`]) with the specialised  [`babel-plugin-transform-modules-requirejs-babel`].
+
 The official [RequireJS optimizer] (`r.js`) does not wire up source maps from the original (not transpiled) sources to the source map of the output bundle. It makes using Babel or other transpilers unfeasible for serious work. If you want the proper support for source maps, replace the official optimizer package ([`requirejs`]) with the forked [`@prantlf/requirejs`], which is fixed.
 
 ## Installation
@@ -217,6 +219,8 @@ Licensed under the MIT license.
 [babel-polyfills-generator]: https://www.npmjs.com/package/babel-polyfills-generator
 [`requirejs`]: https://www.npmjs.com/package/requirejs
 [`@prantlf/requirejs`]: https://www.npmjs.com/package/@prantlf/requirejs
+[`@babel/plugin-transform-modules-amd`]: https://www.npmjs.com/package/@babel/plugin-transform-modules-amd
+[`babel-plugin-transform-modules-requirejs-babel`]: https://www.npmjs.com/package/babel-plugin-transform-modules-requirejs-babel
 [Node.js]: http://nodejs.org/
 [NPM]: https://www.npmjs.com/
 [PNPM]: https://pnpm.io/
