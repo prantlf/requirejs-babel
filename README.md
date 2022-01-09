@@ -17,15 +17,12 @@ The official [RequireJS optimizer] (`r.js`) does not wire up source maps from th
 This module can be installed in your project using [NPM], [PNPM] or [Yarn]. Make sure, that you use [Node.js] version 6 or newer.
 
 ```sh
-npm i -D requirejs-babel7 @babel/standalone babel-plugin-module-resolver-standalone \
-  babel-plugin-amd-checker babel-plugin-amd-default-export
-pnpm i -D requirejs-babel7 @babel/standalone babel-plugin-module-resolver-standalone \
-  babel-plugin-amd-checker babel-plugin-amd-default-export
-yarn add requirejs-babel7 @babel/standalone babel-plugin-module-resolver-standalone \
-  babel-plugin-amd-checker babel-plugin-amd-default-export
+npm i -D requirejs-babel7 @babel/standalone babel-plugin-transform-modules-requirejs-babel
+pnpm i -D requirejs-babel7 @babel/standalone babel-plugin-transform-modules-requirejs-babel
+yarn add requirejs-babel7 @babel/standalone babel-plugin-transform-modules-requirejs-babel
 ```
 
-This plugin has been tested to work with `@babel/standalone 7.x`, `babel-plugin-module-resolver-standalone 0.x` and `babel-plugin-amd-checker 0.x`, which are required as peer dependencies.
+This plugin has been tested to work with `@babel/standalone 7.x`, `babel-plugin-transform-modules-requirejs-babel 0.x`, which are required as peer dependencies.
 
 ## Usage
 
@@ -35,9 +32,7 @@ Add the following paths to the RequireJS configuration:
 paths: {
   es6: 'node_modules/requirejs-babel7/es6',
   babel: 'node_modules/@babel/standalone/babel.min',
-  'babel-plugin-module-resolver': 'node_modules/babel-plugin-module-resolver-standalone/index',
-  'babel-plugin-amd-checker': 'node_modules/babel-plugin-amd-checker/index',
-  'babel-plugin-amd-default-export': 'node_modules/babel-plugin-amd-default-export/index'
+  'babel-plugin-transform-modules-requirejs-babel': 'node_modules/babel-plugin-transform-modules-requirejs-babel/index'
 }
 ```
 
@@ -53,12 +48,11 @@ You can use the ES6 module syntax in modules loaded by the `es6!` plugin includi
 
 This plugin transpiles only ES6 source files. If it detects a statement calling functions `define`, `require` or `require.config` on the root level of the source file, it will return the text of the source file as-is. Source files, which are already AMD modules, are assumed to contain ES5 only.
 
-If you use the RequireJS optimizer `r.js`, you have to exclude Babel with the module-resolver plugin and bundle the `es6`` plugin without the compiling functionality by adding the following to the RequireJS build configuration:
+If you use the RequireJS optimizer `r.js`, you have to exclude Babel with the `babel-plugin-transform-modules-requirejs-babel` plugin and bundle the `es6` plugin without the compiling functionality by adding the following to the RequireJS build configuration:
 
 ```js
 exclude: [
-  'babel', 'babel-plugin-module-resolver',
-  'babel-plugin-amd-checker', 'babel-plugin-amd-default-export'
+  'babel', 'babel-plugin-transform-modules-requirejs-babel'
 ],
 pragmasOnSave: {
   excludeBabel: true // removes the transpiling code from es6.js
@@ -122,7 +116,7 @@ You can use any [options] of [babel.transform] for configuring the `es6` plugin.
 // import * from 'es5module.js'  -> define(['es5module])
 // import * from 'es6module.mjs' -> define(['es6!es6module])
 fileExtension: '.mjs',
-resolveModuleSource: function (sourcePath, currentFile, opts) {
+resolveModuleSource: function (sourcePath, currentFile, options, originalResolvePath) {
   // Ignore paths with other plugins applied and the three built-in
   // pseudo-modules of RequireJS.
   if (sourcePath.indexOf('!') < 0 && sourcePath !== 'require' &&
@@ -163,6 +157,40 @@ npm start
 open http://localhost:8967/demo-polyfill/normal.html
 ```
 
+## Options
+
+The `es6` plugin supports configuration with the following defaults, other recognised options are [documented for Babel transform]:
+
+```js
+{
+  es6: {
+    // Babel plugins to insert before the plugins added by the `es6` RequireJS plugin.
+    extraPlugins: [],
+    // Update paths of module dependencies.
+    resolveModuleSource: func, // see above
+    // The file extension of source files transformed by Babel.
+    fileExtension: '.js',
+    // Enforce transpiling even if a optimized module has been loaded.
+    mixedAmdAndEsm: false,
+    // Suppress transpiling even if an optimized module has not been loaded yet.
+    onlyAmd: false,
+    // Enable minification using `babel-preset-minify`.
+    minified: false
+  }
+}
+```
+
+Other options can be passed among the optimiser's options:
+
+```js
+{
+  // Enable minification using `babel-preset-minify`.
+  minify: false
+}
+```
+
+If you want to enable Babel minification by one of the flags above, you need to install the NPM module `babel-preset-minify`.
+
 ## Contributing
 
 In lieu of a formal styleguide, take care to maintain the existing coding style. Lint and test your code.
@@ -200,3 +228,4 @@ Licensed under the MIT license.
 [mandatory plugins]: https://github.com/prantlf/requirejs-babel/blob/master/es6.js#L48
 [default module name resolution]: https://github.com/prantlf/requirejs-babel/blob/master/es6.js#L38
 [resolvePath]: https://github.com/tleunen/babel-plugin-module-resolver/blob/master/DOCS.md#resolvepath
+[documented for Babel transform]: https://babeljs.io/docs/en/options

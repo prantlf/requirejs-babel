@@ -1,16 +1,15 @@
 define([
 //>>excludeStart('excludeBabel', pragmas.excludeBabel)
-  'babel', 'babel-plugin-module-resolver', 'babel-plugin-amd-checker',
-  'babel-plugin-amd-default-export', 'module'
+  'babel', 'babel-plugin-transform-modules-requirejs-babel', 'module'
 //>>excludeEnd('excludeBabel')
 ], function(
 //>>excludeStart('excludeBabel', pragmas.excludeBabel)
-  babel, moduleResolver, amdChecker, amdDefaultExport, module
+  babel, transformModulesRequireJSBabel, module
 //>>excludeEnd('excludeBabel')
 ) {
 //>>excludeStart('excludeBabel', pragmas.excludeBabel)
   var buildMap = {};
-  var fetchText;
+  var fetchText, presetMinify;
 
   // Initialise the fetchText variable with a function to download
   // from a URL or to read from the file system.
@@ -40,9 +39,7 @@ define([
     };
   }
 
-  babel.registerPlugin('amd-default-export', amdDefaultExport);
-  babel.registerPlugin('amd-checker', amdChecker);
-  babel.registerPlugin('module-resolver', moduleResolver);
+  babel.registerPlugin('transform-modules-requirejs-babel', transformModulesRequireJSBabel);
 
   function parentDir (path) {
     var lastSlash = path.lastIndexOf('/');
@@ -74,7 +71,10 @@ define([
 
   // Ensures that every JavaScript dependency will be converted.
   function resolvePath (sourcePath, currentFile) {
-    if (sourcePath.indexOf('!') < 0) {
+    // Ignore paths with other plugins applied and the three built-in
+    // pseudo-modules of RequireJS.
+    if (sourcePath.indexOf('!') < 0 && sourcePath !== 'require' &&
+      sourcePath !== 'module' && sourcePath !== 'exports') {
       // If sourcePath is relative to currentFile - starts with ./ or ../ -
       // prepend the parent directory of currentFile to it.
       if (sourcePath.charAt(0) === '.' && (sourcePath.charAt(1) === '/' ||
@@ -85,22 +85,24 @@ define([
     }
   }
 
-  var excludedOptions = ['extraPlugins', 'resolveModuleSource', 'fileExtension'];
+  var excludedOptions = [
+    'extraPlugins', 'resolveModuleSource', 'fileExtension',
+    'mixedAmdAndEsm', 'onlyAmd'
+  ];
   var pluginOptions = module.config();
   var fileExtension = pluginOptions.fileExtension || '.js';
+  var mixedAmdAndEsm = pluginOptions.mixedAmdAndEsm;
+  var onlyAmd = pluginOptions.onlyAmd;
+  var resolveModuleSource = pluginOptions.resolveModuleSource;
+  var customResolvePath = resolveModuleSource ?
+    function (moduleName, parentName, options) {
+      return resolveModuleSource(moduleName, parentName, options, resolvePath);
+    } : resolvePath;
+  var defaultPlugins = [
+    ['transform-modules-requirejs-babel', { resolvePath: customResolvePath }]
+  ];
   var defaultOptions = {
-    plugins: (pluginOptions.extraPlugins || []).concat([
-      'amd-checker',
-      'transform-modules-amd',
-      [
-        'module-resolver',
-        { resolvePath: pluginOptions.resolveModuleSource || resolvePath }
-      ],
-      [
-        'amd-default-export',
-        { addDefaultProperty: pluginOptions.addDefaultProperty }
-      ]
-    ])
+    plugins: (pluginOptions.extraPlugins || []).concat(defaultPlugins)
   };
   var hasOwnProperty = Object.prototype.hasOwnProperty;
   for (var key in pluginOptions) {
@@ -111,8 +113,8 @@ define([
 
 //>>excludeEnd('excludeBabel')
   return {
-    load: function (name, req, onload, config) {
-      if (!config.isBuild && req.specified(name)) {
+    load: function (name, req, onload, reqConfig) {
+      if (!mixedAmdAndEsm && !reqConfig.isBuild && req.specified(name) || onlyAmd) {
         return req([name], onload, onload.error);
       }
 //>>excludeStart('excludeBabel', pragmas.excludeBabel)
@@ -132,7 +134,20 @@ define([
         options[key] = defaultOptions[key];
       }
       options.sourceFileName = sourceFileName;
-      options.sourceMap = (!config.isBuild || config.generateSourceMaps) && 'inline';
+      options.sourceMap = (!reqConfig.isBuild || reqConfig.generateSourceMaps) && 'inline';
+      if ((options.minified || reqConfig.minify) && reqConfig.isBuild) {
+        if (!presetMinify) {
+          presetMinify  = require.nodeRequire('babel-preset-minify');
+          babel.registerPreset('minify', presetMinify);
+        }
+        options.minified = true;
+        options.comments = false;
+        if (!options.presets) {
+          options.presets = ['minify'];
+        } else if (!options.presets.includes('minify')) {
+          options.presets.push('minify');
+        }
+      }
 
       fetchText(url, function (error, text) {
         if (error) {
@@ -143,15 +158,12 @@ define([
         try {
           code = babel.transform(text, options).code;
         } catch (error) {
-          if (!(error instanceof amdChecker.AmdDetected)) {
-            console.log('Transpiling "' + name + '" (resolved to "' + url + '") failed:');
-            console.log(error);
-            return onload.error(error);
-          }
-          code = text;
+          console.log('Transpiling "' + name + '" (resolved to "' + url + '") failed:');
+          console.log(error);
+          return onload.error(error);
         }
 
-        if (config.isBuild) {
+        if (reqConfig.isBuild) {
           buildMap[name] = code;
         }
 

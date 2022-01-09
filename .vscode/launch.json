@@ -9,7 +9,7 @@
       "request": "launch",
       "name": "optimize",
       "skipFiles": [],
-      "program": "${workspaceFolder}/node_modules/requirejs/bin/r.js",
+      "program": "${workspaceFolder}/node_modules/@prantlf/requirejs/bin/r.js",
       "args": ["-o", "demo/build.config.js"]
     },
     {
@@ -17,7 +17,7 @@
       "request": "launch",
       "name": "optimize-polyfill",
       "skipFiles": [],
-      "program": "${workspaceFolder}/node_modules/requirejs/bin/r.js",
+      "program": "${workspaceFolder}/node_modules/@prantlf/requirejs/bin/r.js",
       "args": ["-o", "demo-polyfill/build.config.js"]
     }
  ]
