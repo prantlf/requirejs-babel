@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/prantlf/requirejs-babel/compare/v1.0.6...v1.1.0) (2022-01-09)
+
+
+### Features
+
+* Replace all plugins with babel-plugin-transform-modules-requirejs-babel ([84a3d1f](https://github.com/prantlf/requirejs-babel/commit/84a3d1f9bc162532658e9aa00ebe7df2782ccbb1))
+
 ## [1.0.6](https://github.com/prantlf/requirejs-babel/compare/v1.0.5...v1.0.6) (2022-01-08)
 
 
