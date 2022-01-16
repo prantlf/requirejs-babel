@@ -172,6 +172,10 @@ The `es6` plugin supports configuration with the following defaults, other recog
     resolveModuleSource: func, // see above
     // The file extension of source files transformed by Babel.
     fileExtension: '.js',
+    // Skip modules already in the AMD format without trying to parse them.
+    // Module prefixes like "lib/vendor/" are accepted too. Skipped modules
+    // must have all their deep dependencies already transformed.
+    skipModules: [],
     // Enforce transpiling even if a optimized module has been loaded.
     mixedAmdAndEsm: false,
     // Suppress transpiling even if an optimized module has not been loaded yet.

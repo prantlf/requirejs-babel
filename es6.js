@@ -107,6 +107,21 @@ define([
     }
   }
 
+  // Checks if a module name is included in the list of modules to skip
+  // the transformation.
+  function skipModule (name) {
+    var i, len;
+    if (!skipModules) {
+      return;
+    }
+    for (i = 0, len = skipModules.length; i < len; ++i) {
+      // Accept a path prefix as well.
+      if (name.indexOf(skipModules[i]) === 0) {
+        return true;
+      }
+    }
+  }
+
   // The plugin options is a mixture of the plugin's options and of Babel's
   // options. Babels will complain if an unknown options is detected.
   var excludedOptions = [
@@ -119,6 +134,8 @@ define([
   // Flags to enforce or suppress the transpilation of not yet defined modules.
   var mixedAmdAndEsm = pluginOptions.mixedAmdAndEsm;
   var onlyAmd = pluginOptions.onlyAmd;
+  // List of module names or prefixes not to check and transform.
+  var skipModules = pluginOptions.skipModules;
   // Method to update paths of module dependencies, to prefix JavaScript module
   // name with `es6!`, above all.
   var resolveModuleSource = pluginOptions.resolveModuleSource;
@@ -156,7 +173,8 @@ define([
       // If the whole application is transpiled, there is no need to transpile
       // ESM modules or prefix dependencies of AMD modules. Even not yet defined
       // modules can be loaded just by `require` to get better performance.
-      if (!mixedAmdAndEsm && !reqConfig.isBuild && req.specified(name) || onlyAmd) {
+      if (!mixedAmdAndEsm && !reqConfig.isBuild && req.specified(name) ||
+          onlyAmd || skipModule(name)) {
         return req([name], onload, onload.error);
       }
 //>>excludeStart('excludeBabel', pragmas.excludeBabel)
