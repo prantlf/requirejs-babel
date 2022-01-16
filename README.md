@@ -170,6 +170,8 @@ The `es6` plugin supports configuration with the following defaults, other recog
     extraPlugins: [],
     // Update paths of module dependencies.
     resolveModuleSource: func, // see above
+    // Allow using a different plugin alias than `es6` in the source code.
+    pluginName: 'es6',
     // The file extension of source files transformed by Babel.
     fileExtension: '.js',
     // Skip modules already in the AMD format without trying to parse them.

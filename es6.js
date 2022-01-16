@@ -103,7 +103,7 @@ define([
           sourcePath.charAt(1) === '.' && sourcePath.charAt(2) === '/')) {
         sourcePath = joinPath(parentDir(currentFile), sourcePath);
       }
-      return 'es6!' + sourcePath;
+      return pluginName + '!' + sourcePath;
     }
   }
 
@@ -129,6 +129,8 @@ define([
     'mixedAmdAndEsm', 'onlyAmd'
   ];
   var pluginOptions = module.config();
+  // Allow using a different plugin alias than `es6` in the source code.
+  var pluginName = pluginOptions.pluginName || 'es6';
   // Assume that the original sources are JavaScript files by default.
   var fileExtension = pluginOptions.fileExtension || '.js';
   // Flags to enforce or suppress the transpilation of not yet defined modules.
