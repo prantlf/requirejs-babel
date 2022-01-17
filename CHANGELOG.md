@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/prantlf/requirejs-babel/compare/v1.2.0...v1.2.1) (2022-01-17)
+
+
+### Bug Fixes
+
+* Do not pass the option skipModules to Babel ([5652f4a](https://github.com/prantlf/requirejs-babel/commit/5652f4af4e21a8f84b7c0439773a886ddc2ed53c))
+
 # [1.2.0](https://github.com/prantlf/requirejs-babel/compare/v1.1.0...v1.2.0) (2022-01-17)
 
 
