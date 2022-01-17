@@ -1,3 +1,11 @@
+# [1.2.0](https://github.com/prantlf/requirejs-babel/compare/v1.1.0...v1.2.0) (2022-01-17)
+
+
+### Features
+
+* Allow skipping modules by names or prefixes ([5ce68bf](https://github.com/prantlf/requirejs-babel/commit/5ce68bf66599c6e434ceea50789456e5ae52ede7))
+* Allow using a different plugin alias than es6 ([86c5be9](https://github.com/prantlf/requirejs-babel/commit/86c5be9e9d972f18e62115980a088c4993496982))
+
 # [1.1.0](https://github.com/prantlf/requirejs-babel/compare/v1.0.6...v1.1.0) (2022-01-09)
 
 
