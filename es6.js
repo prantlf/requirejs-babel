@@ -126,7 +126,7 @@ define([
   // options. Babels will complain if an unknown options is detected.
   var excludedOptions = [
     'extraPlugins', 'resolveModuleSource', 'fileExtension',
-    'mixedAmdAndEsm', 'onlyAmd'
+    'mixedAmdAndEsm', 'onlyAmd', 'skipModules'
   ];
   var pluginOptions = module.config();
   // Allow using a different plugin alias than `es6` in the source code.

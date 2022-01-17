@@ -1,6 +1,6 @@
 async function delay (value) {
   console.log(`Waiting with "${value}" for 2 seconds...`);
-  const result = await await new Promise(resolve =>
+  const result = await new Promise(resolve =>
     setTimeout(() => resolve(value), 2000));
   return result;
 }
