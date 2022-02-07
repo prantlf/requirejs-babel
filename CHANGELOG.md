@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/prantlf/requirejs-babel/compare/v1.2.1...v1.3.0) (2022-02-07)
+
+
+### Features
+
+* Add programmatic API ([503d301](https://github.com/prantlf/requirejs-babel/commit/503d301b604e13df5dfbccf1703382a86b8a2a8a))
+
 ## [1.2.1](https://github.com/prantlf/requirejs-babel/compare/v1.2.0...v1.2.1) (2022-01-17)
 
 
