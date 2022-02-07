@@ -38,7 +38,9 @@
     "optimize": "npm run optimize:demo && npm run optimize:demo-polyfill",
     "optimize:demo": "r.js -o demo/build.config.js",
     "optimize:demo-polyfill": "r.js -o demo-polyfill/build.config.js",
-    "test": "eslint es6.js"
+    "lint": "eslint es6.js",
+    "check": "eslint es6.js",
+    "test": "npm run lint && npm run check"
   },
   "release": {
     "plugins": [
@@ -70,6 +72,7 @@
     "@semantic-release/git": "^10.0.1",
     "babel-plugin-transform-modules-requirejs-babel": "^0.0.4",
     "babel-polyfills-generator": "^0.0.1",
+    "babel-preset-minify": "^0.5.1",
     "connect": "^3.7.0",
     "connect-block-favicon": "^1.0.4",
     "core-js": "^3.20.2",

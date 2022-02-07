@@ -1,0 +1,1 @@
+define('this', ['name'], function () {})

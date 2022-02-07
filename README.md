@@ -199,6 +199,36 @@ Other options can be passed among the optimiser's options:
 
 If you want to enable Babel minification by one of the flags above, you need to install the NPM module `babel-preset-minify`.
 
+## API
+
+The transformation applied by the plugin can be performed programmatically too.
+
+```js
+const { transform } = require('requirejs-babel7/api')
+const code = transform('import a from "a"', 'test', { sourceMap: true })
+```
+
+The `transform` method supports a subset of plugin options:
+
+```js
+{
+  es6: {
+    // Babel plugins to insert before the plugins added by the `es6` RequireJS plugin.
+    extraPlugins: [],
+    // Update paths of module dependencies.
+    resolveModuleSource: func, // see above
+    // Allow using a different plugin alias than `es6` in the source code.
+    pluginName: 'es6',
+    // The file extension of source files transformed by Babel.
+    fileExtension: '.js',
+    // Enable adding an inline source map to the code output.
+    sourceMap: false,
+    // Enable minification using `babel-preset-minify`.
+    minified: false
+  }
+}
+```
+
 ## Contributing
 
 In lieu of a formal styleguide, take care to maintain the existing coding style. Lint and test your code.

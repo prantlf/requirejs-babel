@@ -1,0 +1,1 @@
+my.require(['name'], function () {});

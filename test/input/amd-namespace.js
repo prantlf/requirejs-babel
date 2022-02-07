@@ -1,0 +1,1 @@
+my.define(['name'], function () {})
