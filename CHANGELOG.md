@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/prantlf/requirejs-babel/compare/v1.3.0...v1.3.1) (2022-02-08)
+
+
+### Bug Fixes
+
+* Fix loading of the babel transformation plugin in the API mode ([a1faddf](https://github.com/prantlf/requirejs-babel/commit/a1faddf955946a3cc0bb87de406961a017eba6eb))
+
 # [1.3.0](https://github.com/prantlf/requirejs-babel/compare/v1.2.1...v1.3.0) (2022-02-07)
 
 
