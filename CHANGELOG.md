@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/prantlf/requirejs-babel/compare/v1.3.1...v1.3.2) (2022-02-08)
+
+
+### Bug Fixes
+
+* Include api.js in the NPM package ([fcda471](https://github.com/prantlf/requirejs-babel/commit/fcda471efbc98f2dbd88a9f616129c70dbbe369f))
+
 ## [1.3.1](https://github.com/prantlf/requirejs-babel/compare/v1.3.0...v1.3.1) (2022-02-08)
 
 
