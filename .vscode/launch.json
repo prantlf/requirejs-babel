@@ -5,20 +5,34 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "test",
       "type": "pwa-node",
       "request": "launch",
-      "name": "optimize",
-      "skipFiles": [],
-      "program": "${workspaceFolder}/node_modules/@prantlf/requirejs/bin/r.js",
-      "args": ["-o", "demo/build.config.js"]
+      "program": "${workspaceFolder}/node_modules/tehanu-teru/index.js",
+      "args": ["test/index.js"],
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
     },
     {
+      "name": "optimize",
       "type": "pwa-node",
       "request": "launch",
-      "name": "optimize-polyfill",
-      "skipFiles": [],
       "program": "${workspaceFolder}/node_modules/@prantlf/requirejs/bin/r.js",
-      "args": ["-o", "demo-polyfill/build.config.js"]
+      "args": ["-o", "demo/build.config.js"],
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    },
+    {
+      "name": "optimize-polyfill",
+      "type": "pwa-node",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/@prantlf/requirejs/bin/r.js",
+      "args": ["-o", "demo-polyfill/build.config.js"],
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
     }
  ]
 }

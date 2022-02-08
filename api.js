@@ -1,6 +1,6 @@
 var { transform, registerPlugin, registerPreset } = require('@babel/standalone');
 // var { transform } = require('@babel/core');
-var transformModulesRequireJSBabel = require('babel-plugin-transform-modules-requirejs-babel');
+var transformModulesRequireJSBabel = require('babel-plugin-transform-modules-requirejs-babel/cjs');
 
 var presetMinify;
 
