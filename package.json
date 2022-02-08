@@ -26,7 +26,8 @@
   },
   "main": "es6.js",
   "files": [
-    "es6.js"
+    "es6.js",
+    "api.js"
   ],
   "scripts": {
     "prepare": "npm run generate && npm run optimize",
