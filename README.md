@@ -269,6 +269,6 @@ Licensed under the MIT license.
 [babel.transform]: https://babeljs.io/docs/en/babel-core#transform
 [options]: https://babeljs.io/docs/en/options
 [mandatory plugins]: https://github.com/prantlf/requirejs-babel/blob/master/es6.js#L48
-[default module name resolution]: https://github.com/prantlf/requirejs-babel/blob/master/es6.js#L38
+[default module name resolution]: https://github.com/prantlf/requirejs-babel/blob/master/es6.js#L93
 [resolvePath]: https://github.com/tleunen/babel-plugin-module-resolver/blob/master/DOCS.md#resolvepath
 [documented for Babel transform]: https://babeljs.io/docs/en/options
