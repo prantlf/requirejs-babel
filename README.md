@@ -14,6 +14,8 @@ More complicated RequireJS projects which mix ESM with AMD modules will need to 
 
 The official [RequireJS optimizer] (`r.js`) does not wire up source maps from the original (not transpiled) sources to the source map of the output bundle. It makes using Babel or other transpilers unfeasible for serious work. If you want the proper support for source maps, replace the official optimizer package ([`requirejs`]) with the forked [`@prantlf/requirejs`], which is fixed.
 
+If you do not need to transpile the code to an earlier ECMAScript version, have a look at [requirejs-esm]. It converts only the module format from ESM to AMD; it does not transpile the language and that is why it is a lot faster than plugithis n using [Babel].
+
 ## Installation
 
 This module can be installed in your project using [NPM], [PNPM] or [Yarn]. Make sure, that you use [Node.js] version 6 or newer.
@@ -250,6 +252,7 @@ Licensed under the MIT license.
 [requirejs-babel]: https://www.npmjs.com/package/requirejs-babel
 [requirejs-babel6]: https://www.npmjs.com/package/requirejs-babel6
 [requirejs-babel7]: https://www.npmjs.com/package/requirejs-babel7
+[requirejs-esm]: https://www.npmjs.com/package/requirejs-esm
 [@babel/standalone]: https://www.npmjs.com/package/@babel/standalone
 [@babel/polyfill]: https://www.npmjs.com/package/@babel/polyfill
 [babel-polyfills-generator]: https://www.npmjs.com/package/babel-polyfills-generator
