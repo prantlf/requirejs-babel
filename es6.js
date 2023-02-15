@@ -47,6 +47,9 @@ define([
   // leaving the slash in the result. If there is no slash in the path - the path
   // is just a file name, it will return `undefined`.
   function parentDir (path) {
+    if (path[path.length - 1] === '/') {
+      path = path.substring(0, path.length - 1)
+    }
     var lastSlash = path.lastIndexOf('/');
     return lastSlash > 0 ? path.substring(0, lastSlash + 1) : undefined;
   }
