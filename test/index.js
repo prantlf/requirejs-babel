@@ -8,7 +8,7 @@ const test = tehanu('es6')
 test('transform with sourcemap', async function () {
   const code = await transform('import A from "name"', 'test.js', { sourceMap: true })
   equal(code, `define(["es6!name"], function (A) {\n  "use strict";\n});
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlc3QuanMiXSwibmFtZXMiOlsiQSJdLCJtYXBwaW5ncyI6IlFBQWMsVSxhQUFQQSxDIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IEEgZnJvbSBcIm5hbWVcIiJdfQ==`)
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJBIl0sInNvdXJjZXMiOlsidGVzdC5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgQSBmcm9tIFwibmFtZVwiIl0sIm1hcHBpbmdzIjoiUUFBYyxVQUFNLGFBQWJBLENBQUM7RUFBQTtBQUFBIiwiaWdub3JlTGlzdCI6W119`)
 })
 
 test('minify', async function () {
