@@ -1,5 +1,11 @@
 # Changes
 
+## [1.5.0](https://github.com/prantlf/requirejs-babel/compare/v1.4.0...v1.5.0) (2025-05-14)
+
+### Features
+
+* Upgrade dependencies ([a62cd6a](https://github.com/prantlf/requirejs-babel/commit/a62cd6a8df40f939e7e8af057e90a0481d7ae0d3))
+
 ## [1.4.0](https://github.com/prantlf/requirejs-babel/compare/v1.3.2...v1.4.0) (2024-07-26)
 
 ### Features

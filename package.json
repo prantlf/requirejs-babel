@@ -1,6 +1,6 @@
 {
   "name": "requirejs-babel7",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "An AMD module loader plugin for using RequireJS with Babel 7.",
   "author": "Ferdinand Prantl <prantlf@gmail.com>",
   "contributors": [
